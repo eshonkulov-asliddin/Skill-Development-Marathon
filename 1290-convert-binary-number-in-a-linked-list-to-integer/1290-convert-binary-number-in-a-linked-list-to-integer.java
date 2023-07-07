@@ -10,23 +10,26 @@
  */
 class Solution {
     public int getDecimalValue(ListNode head) {
-        List<Integer> binaries = new ArrayList<>();
         
+        ListNode prev = null;
         while(head != null){
-            binaries.add(head.val);
-            head = head.next;
+            ListNode nxt = head.next;
+            head.next = prev;
+            prev = head;
+            head = nxt;
         }
-        
-        Collections.reverse(binaries);
+    
         
         int ans = 0;
         int val = 1;
-        for (int num : binaries){
-            if (num == 1){
+        while (prev != null){
+            if (prev.val == 1){
                 ans += val;
             }
             val = val * 2;
+            prev = prev.next;
         }
+    
         return ans;
         
     }
