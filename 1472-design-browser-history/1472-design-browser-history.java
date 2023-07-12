@@ -5,10 +5,6 @@ class DoublyLinkedList {
     
     DoublyLinkedList(){}
     DoublyLinkedList(String url) {this.url = url;}
-    
-    public String toString(){
-        return url;
-    }
 }
 
 class BrowserHistory {
@@ -20,12 +16,11 @@ class BrowserHistory {
     }
     
     public void visit(String url) {
-        this.list.next = new DoublyLinkedList(url);
+        DoublyLinkedList next = new DoublyLinkedList(url);
         DoublyLinkedList prev = this.list;
+        this.list.next = next;
         this.list = this.list.next;
-        this.list.prev = prev;    
-        System.out.println(this.list);
-        
+        this.list.prev = prev;            
     }
     
     public String back(int steps) {
@@ -36,7 +31,6 @@ class BrowserHistory {
             steps--;
             this.list = this.list.prev;
         }
-        System.out.println(this.list);
         return this.list.url;
         
     }
@@ -49,7 +43,6 @@ class BrowserHistory {
             steps--;
             this.list = this.list.next;
         }
-        System.out.println(this.list);
         return this.list.url; 
     }
 }
