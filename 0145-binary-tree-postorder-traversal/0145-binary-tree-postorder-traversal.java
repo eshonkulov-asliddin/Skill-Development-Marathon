@@ -15,12 +15,26 @@
  */
 class Solution {
     List<Integer> ans = new ArrayList<>();
+    
     public List<Integer> postorderTraversal(TreeNode root) {
-        if (root != null){
-            postorderTraversal(root.left);
-            postorderTraversal(root.right);
-            ans.add(root.val);
+        Stack<TreeNode> stack = new Stack();
+        if (root == null) return new ArrayList<>();
+        stack.add(root);
+        
+        while (stack.size() > 0){
+            TreeNode node = stack.pop();
+            ans.add(node.val);
+            if (node.left != null){
+                stack.add(node.left);
+            }
+            if (node.right != null){
+                stack.add(node.right);
+            }
+            
         }
+        Collections.reverse(ans);
         return ans;
+        
+        
     }
 }
