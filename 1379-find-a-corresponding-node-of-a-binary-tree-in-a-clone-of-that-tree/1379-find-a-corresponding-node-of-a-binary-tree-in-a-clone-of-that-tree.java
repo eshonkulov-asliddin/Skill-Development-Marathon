@@ -10,22 +10,13 @@
 
 class Solution {
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
-        Stack stack = new Stack();
-        stack.add(cloned);
-        
-        while (stack.size() > 0){
-            TreeNode node = (TreeNode) stack.pop();
-            System.out.println(node.val);
-            if (node.val == target.val){
-                return node;
-            }
-            if (node.left != null){
-                stack.add(node.left);
-            }
-            if (node.right != null){
-                stack.add(node.right);
-            }
-        }
-        return null;
+        return dfs(cloned, target);
+    }
+    
+    public TreeNode dfs(TreeNode cloned, TreeNode target){
+        if (cloned == null || cloned.val == target.val) return cloned;
+        TreeNode left = dfs(cloned.left, target);
+        TreeNode right = dfs(cloned.right, target);
+        return left != null ? left:right;
     }
 }
