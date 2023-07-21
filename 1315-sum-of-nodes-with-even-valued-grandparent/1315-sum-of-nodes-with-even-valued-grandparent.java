@@ -25,8 +25,9 @@ class Solution {
             for (int i = 0; i < size; i++){
                 TreeNode grandParent = queue.remove();
                 if (grandParent.val % 2 == 0){
-                    int curTotal = getTheChildSum(grandParent);
-                    total += curTotal;
+                    //find the sum of all values of grandchilds
+                    int grandChildsSumVal = getTheChildSum(grandParent);
+                    total += grandChildsSumVal;
                 }
                 if (grandParent.left != null){
                     queue.add(grandParent.left);
@@ -42,12 +43,12 @@ class Solution {
     
     public int getTheChildSum(TreeNode grandParent){
         int count = 0;
-        int curTotal = 0;
+        int grandChildsSumVal = 0;
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(grandParent);
         
+        //finding grandchildrens
         while (queue.size() > 0 && count < 2){
-            // System.out.println(queue);
             int size = queue.size();
             for (int i = 0; i < size; i++){
                 TreeNode child = queue.remove();
@@ -63,14 +64,12 @@ class Solution {
         }
         
         
-
+        //sum up all the grandchildrens value
         while (queue.size() > 0){
             TreeNode node = queue.remove();
-            curTotal += node.val;
+            grandChildsSumVal += node.val;
         }
-        System.out.println(curTotal);
-
-        return curTotal;
+        return grandChildsSumVal;
         
     }
 }
