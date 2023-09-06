@@ -11,12 +11,8 @@
 
 /*
 
-head = [1,2,3,4,5,6,7,8,9,10], k = 3
-
-elements = 10 / 3 = 3
-firstNElements = 10 % 3 = 1
-
-[]
+Time Complexity: O(n)
+Space Complexity: O(k)
 */
 class Solution {
     public ListNode[] splitListToParts(ListNode head, int k) {
