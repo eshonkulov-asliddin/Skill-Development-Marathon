@@ -1,3 +1,7 @@
+/*
+    Time Complexity: O(n);
+    Space Complexity: O(n);
+*/
 class Solution {
     public int minLength(String s) {
         
@@ -10,9 +14,11 @@ class Solution {
                 continue;
             }
             
-            if (character == 'B' && stack.peek() == 'A'){
+            char peek = stack.peek();
+            
+            if (peek == 'A' && character == 'B'){
                 stack.pop();
-            }else if (character == 'D' && stack.peek() == 'C'){
+            }else if (peek == 'C' && character == 'D'){
                 stack.pop();
             }else {
                 stack.add(character);
