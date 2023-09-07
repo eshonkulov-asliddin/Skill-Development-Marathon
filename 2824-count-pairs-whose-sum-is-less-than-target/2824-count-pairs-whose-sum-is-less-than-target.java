@@ -1,6 +1,8 @@
 class Solution {
     public int countPairs(List<Integer> nums, int target) {
         
+        // Time: O(n log n)
+        // Space: O(1)
         
         Collections.sort(nums);
         
@@ -9,7 +11,8 @@ class Solution {
         
         int count = 0;
         while (l < r){
-            if (nums.get(l) + nums.get(r) < target){
+            int pairSum = nums.get(l) + nums.get(r);
+            if ( pairSum < target){
                 count += r - l;
                 l++;
             }else{
@@ -19,19 +22,25 @@ class Solution {
         
         return count;
         
-        
-//         int length = nums.size();
-//         int count = 0;
-//         for (int i = 0; i < length; i++){
-//             for (int j = i+1; j < length; j++){
-//                 if ( (i >= 0 && i < j) &&
-//                      (nums.get(i) + nums.get(j) < target) ){
+ /*       
+    // Time: O(n**2)
+    // Space: O(1)
+    
+        int length = nums.size();
+        int count = 0;
+        for (int i = 0; i < length; i++){
+            for (int j = i+1; j < length; j++){
+                if ( (i >= 0 && i < j) &&
+                     (nums.get(i) + nums.get(j) < target) ){
                     
-//                     count++;
-//                 }
-//             }    
-//         }
+                    count++;
+                }
+            }    
+        }
         
-//         return count;
+        return count;
+  */        
+        
+        
     }
 }
