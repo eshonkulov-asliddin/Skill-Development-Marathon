@@ -10,12 +10,10 @@
  */
 
 /*
-        carry = 1
-
-     l1 = [9,9,9,9,9,9,9], l2 = 
-          [9,9,9,9]
-           8 9 9 9 0 0 0 1
+      Time Complexity: O(max(n, m))
+      Space Complexity: O(max(n, m)) => if we count output list as an extra space
 */
+
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         
