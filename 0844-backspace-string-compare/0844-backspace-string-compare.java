@@ -1,13 +1,13 @@
 class Solution {
+    
     public boolean backspaceCompare(String s, String t) {
         
-        /*
+    /*
         
-        
-        "f"
-        "#f"
+        Time Complexity: O(n)
+        Space Complexity: O(n)
 
-*/
+    */
         
         String sAfterOpt = applyOperation(s);
         String tAfterOpt = applyOperation(t);
