@@ -1,9 +1,14 @@
 class Solution {
     public int pivotInteger(int n) {
         
-        int rangeSum = 0;
+        /*
+            Time Complexity: O(n)
+            Space Complexity: O(1)
+        */
         
-        for (int i = 1; i <= n; i++) rangeSum += i;
+        int allSum = 0;
+        
+        for (int i = 1; i <= n; i++) allSum += i;
         
         
         int curSum = 0;
@@ -11,11 +16,11 @@ class Solution {
             
             curSum += i;
             
-            if (curSum == rangeSum){
+            if (curSum == allSum){
                 return i;
             }
             
-            rangeSum -= i;
+            allSum -= i;
             
             
         }
