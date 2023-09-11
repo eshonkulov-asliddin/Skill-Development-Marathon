@@ -4,28 +4,40 @@ class Solution {
         /*
             Time Complexity: O(n)
             Space Complexity: O(1)
+            
+            n = 1,2,3,4,5,6,7,8
+                          l r
+            rightSum = 15
+            leftSum = 15
         */
         
-        int allSum = 0;
+        int leftSum = 0, rightSum = 0;
         
-        for (int i = 1; i <= n; i++) allSum += i;
+        int left = 0, right = n;
         
-        
-        int curSum = 0;
-        for (int i = 1; i <= n; i++){
+        while (left <= right) {
             
-            curSum += i;
-            
-            if (curSum == allSum){
-                return i;
+            if (leftSum == rightSum){
+                leftSum += left + 1;
+                rightSum += right;
+                
+                left++;
+                right--;
+                
+            }else if (leftSum > rightSum){
+                rightSum += right;
+                right--;
+                
+            }else{
+                leftSum += left + 1;
+                left++;
             }
             
-            allSum -= i;
             
             
         }
         
-        return -1;
+        return leftSum == rightSum ? left : -1;
         
     }
 }
