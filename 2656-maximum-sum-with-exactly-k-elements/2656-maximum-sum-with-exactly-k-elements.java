@@ -5,18 +5,8 @@ class Solution {
     */
     public int maximizeSum(int[] nums, int k) {
         
-        int maxId = -1, maxNum = -1;
         
-        // find max num and id
-        for (int i = 0; i < nums.length; i++) {
-            int curNum = nums[i];
-            if (curNum > maxNum) {
-                maxNum = curNum;
-                maxId = i;
-            }
-        }
-        
-        
+        int maxNum = findMax(nums);
         int score = 0;
         
         for (int i = 0; i < k; i++) {
@@ -25,5 +15,15 @@ class Solution {
         
         return score;
         
+    }
+    
+    public int findMax(int[] nums) {
+        int maxNum = -1;
+        
+        for (int num : nums) {
+            maxNum = Math.max(num, maxNum);
+        }
+        
+        return maxNum;
     }
 }
