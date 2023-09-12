@@ -13,12 +13,14 @@
  *     }
  * }
  
+    Time Complexity: O(n)
+    Space Complexity: O(n) if count output array as an extra space
          
  */
 class Solution {
     public TreeNode constructMaximumBinaryTree(int[] nums) {
 
-        return  recurse(nums, new TreeNode());
+        return recurse( nums, new TreeNode() );
 
     }
 
@@ -32,9 +34,9 @@ class Solution {
         int maxId = -1;
         int maxNum = -1;
 
-        for (int i = 0; i < nums.length; i++) {
+        for ( int i = 0; i < nums.length; i++ ) {
             int curNum = nums[i];
-            if (curNum > maxNum) {
+            if ( curNum > maxNum ) {
                 maxNum = curNum;
                 maxId = i;
             }
