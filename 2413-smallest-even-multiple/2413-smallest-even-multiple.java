@@ -1,14 +1,10 @@
 class Solution {
     public int smallestEvenMultiple(int n) {
         
-        while (true) {
-            
-            if (n % 2 == 0){
+        if (n % 2 == 0){
                 return n;
-            }
-            
-            n += n;
         }
-                
+        
+        return smallestEvenMultiple(n+n);
     }
 }
