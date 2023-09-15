@@ -1,22 +1,22 @@
 /*
-    Time Complexity: O(n+k)
-    Space Complexity: O(n+k)
+    Time Complexity: O(n)
+    Space Complexity: O(1)
 */
 
 class Solution {
     public String truncateSentence(String s, int k) {
         
-        String[] words = s.split(" ");
-        
-        StringBuilder ans = new StringBuilder();
-        
-        int i = 0;
-        while (i < k - 1) {
-            ans.append(words[i++] + " ");
+        int countSpace = 0;
+        int idx = 0;
+        for (char ch : s.toCharArray()) {
+            
+            if (ch == ' ') countSpace++;
+            
+            if (countSpace == k) return s.substring(0, idx);
+            
+            idx++;
         }
         
-        ans.append(words[i]);
-        
-        return ans.toString();
+        return s.substring(0, idx);
     }
 }
