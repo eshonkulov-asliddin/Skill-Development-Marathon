@@ -1,31 +1,18 @@
 class Solution {
     /*
-    
-        [5,3,4]
-        
-        [1, 8, 9] = 8
-        [2, 6, 7] = 6
-                    4
-        
-        
-        [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            l              r
+        Time Complexity: O(n log n) - because we are using sort()
+        Space Complexity: O(1)
     */
     
     public int maxCoins(int[] piles) {
         
         Arrays.sort(piles);
-        
-        int l = 0;
-        int r = piles.length - 1;
-        
-        
+      
+        int length = piles.length;
+        int r = length - 2;
         int coins = 0;
-        while (l < r) {
-            coins += piles[--r];
-            
-            r--;
-            l++;
+        for (int i = r; i >= length / 3; i -= 2) {
+            coins += piles[i];
         }
         
         return coins;
