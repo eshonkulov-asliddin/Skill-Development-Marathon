@@ -13,9 +13,17 @@ class Solution {
     
     public boolean isPalindrome(String word) {
         
-        StringBuilder reversedWord = new StringBuilder(word).reverse();
+        int length = word.length();
         
-        return word.equals(reversedWord.toString());
+        for (int i = 0; i < length / 2; i++) {
+            
+            if (word.charAt(i) != word.charAt(length - 1 - i)) {
+                
+                return false;
+            }
+            
+        }
+        return true;
         
     }
 }
