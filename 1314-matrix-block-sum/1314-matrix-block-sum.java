@@ -1,18 +1,5 @@
 class Solution {
-    
-    /*
-        mat = [
-                [1,2,3],
-                [4,5,6],
-                [7,8,9]
-            
-            ], k = 1
-        
-        -1 <=  <= 1
-        c = 
-        [[]]
-    
-    */
+
     public int[][] matrixBlockSum(int[][] mat, int k) {
         
         int row = mat.length;
@@ -56,3 +43,8 @@ class Solution {
     }
     
 }
+
+/*
+    Time Complexity: O(n**2 * m**2) 
+    Space Complexity: O(1)
+*/
