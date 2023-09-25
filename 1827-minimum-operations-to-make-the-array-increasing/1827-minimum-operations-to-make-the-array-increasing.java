@@ -21,6 +21,6 @@ class Solution {
 }
 
 /*
-    Time Complexity: O(n* abs(m-l)) where m = prevnum within array, l = curnum within array
+    Time Complexity: O(n)
     Space Complexity: O(1)
 */
