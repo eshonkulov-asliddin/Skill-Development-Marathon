@@ -6,15 +6,13 @@ class Solution {
         
         for (int i = 1; i < nums.length; i++) {
             
-            int prevNum = nums[i-1];
-            int curNum = nums[i];
+            int operation = nums[i-1] - nums[i];
             
-            while (curNum <= prevNum){
-                curNum++;
-                operations++;
+            if (operation >= 0) {
+                //in order make strictly increasing, we need to add 1 to current operation
+                nums[i] = nums[i] + operation + 1;
+                operations += operation + 1;
             }
-            // update num
-            nums[i] = curNum;
         }
         
         return operations;
