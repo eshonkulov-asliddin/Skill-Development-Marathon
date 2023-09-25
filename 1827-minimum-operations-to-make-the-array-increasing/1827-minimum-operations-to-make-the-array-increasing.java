@@ -6,12 +6,11 @@ class Solution {
         
         for (int i = 1; i < nums.length; i++) {
             
-            int operation = nums[i-1] - nums[i];
+            int diff = nums[i-1] - nums[i] + 1;
             
-            if (operation >= 0) {
-                //in order make strictly increasing, we need to add 1 to current operation
-                nums[i] = nums[i] + operation + 1;
-                operations += operation + 1;
+            if (diff > 0) {                
+                operations += diff;
+                nums[i] += diff;
             }
         }
         
@@ -21,6 +20,6 @@ class Solution {
 }
 
 /*
-    Time Complexity: O(n)
+    Time Complexity: O(n-1)
     Space Complexity: O(1)
 */
