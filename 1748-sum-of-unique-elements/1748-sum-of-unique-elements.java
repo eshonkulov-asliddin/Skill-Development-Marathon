@@ -1,6 +1,6 @@
 class Solution {
     
-    int sum = 0;
+    private int sum = 0;
     
     public int sumOfUnique(int[] nums) {
         
