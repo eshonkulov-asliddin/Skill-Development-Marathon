@@ -1,42 +1,40 @@
 class Solution {
     public int[] numberOfPairs(int[] nums) {
+        int length = nums.length;
 
         // base case
-        if (nums.length == 1){
+        if (length == 1){
             return new int[]{0, 1};
         }
 
         int countPairs = 0;
+        int remainedNum = 0;
 
-        int length = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
 
-        for (int i = 0; i < nums.length-1; i++){
-            for (int j = i+1; j < nums.length; j++){
-                if (nums[i] == nums[j] && nums[i] != -1){
-                    countPairs++;
-                    nums[i] = -1;
-                    nums[j] = -1;
-                    break;
-                }
-            }
-        }
-
-        return new int[]{countPairs, getRemainedNumLength(nums)};
-        
-    }
-
-    public int getRemainedNumLength(int[] nums){
-        int count = 0;
         for (int num : nums){
-            if (num > -1){
-                count++;
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()){
+
+            int val = entry.getKey();
+            int occur = entry.getValue();
+
+            if (occur % 2 == 0){
+                countPairs += (int) occur / 2;
+            }else{
+                countPairs += (int) occur / 2;
+                remainedNum++;
             }
         }
-        return count;
+
+        return new int[]{countPairs, remainedNum};
+        
     }
 }
 
 /*
-    Time Complexity: O(n2)
-    Space Complexity: O(1)
+    Time Complexity: O(n)
+    Space Complexity: O(n)
  */
