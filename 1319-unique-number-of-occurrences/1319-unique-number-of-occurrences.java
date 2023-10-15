@@ -1,16 +1,16 @@
 class Solution {
     public boolean uniqueOccurrences(int[] arr) {
 
-        Map<Integer, Integer> valOccurr = new HashMap<>();
+        Map<Integer, Integer> freq = new HashMap<>();
 
         // map num to its occurrences
         for (int num : arr) {
-            valOccurr.put(num, valOccurr.getOrDefault(num, 0) + 1);
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
         }
 
         Set<Integer> occurrences = new HashSet<>();
-
-        for (Map.Entry<Integer, Integer> entry : valOccurr.entrySet()){
+        // iterate map and check repeated occurrences
+        for (Map.Entry<Integer, Integer> entry : freq.entrySet()){
             int occurrence = entry.getValue();
             if (occurrences.contains(occurrence)){
                 return false;
