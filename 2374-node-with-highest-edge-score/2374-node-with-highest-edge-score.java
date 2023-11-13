@@ -34,7 +34,7 @@ class Solution {
         for (int i = 0; i < n; i++) {
             int curVal = edges[i];
 
-            if (curVal != i) { // Add this condition
+            if (curVal != i) {
                 List<Integer> list = map.getOrDefault(curVal, new ArrayList());
                 list.add(i);
 
