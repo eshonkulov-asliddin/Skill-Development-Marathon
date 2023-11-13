@@ -39,10 +39,9 @@ class Solution {
                 list.add(i);
 
                 map.put(curVal, list);
+            }
         }
-}
 
-        
         return map;
     }
 }
