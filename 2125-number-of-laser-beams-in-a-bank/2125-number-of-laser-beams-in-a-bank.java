@@ -1,33 +1,17 @@
 class Solution {
     public int numberOfBeams(String[] bank) {
         int result = 0;
+        int prev = getNumOfLazers(bank[0]);
         
-        int i = 0, j = 1;
-        
-        while (i < j && j < bank.length) {
+        for (int i = 1; i < bank.length; i++) {
+            int curr = getNumOfLazers(bank[i]);
             
-            int first = getNumOfLazers(bank[i]);
-            while (first <= 0 && j < bank.length - 1) {
-                i++;
-                j++;
-                first = getNumOfLazers(bank[i]);
+            if (curr > 0) {
+                result += (prev * curr);
+                prev = curr;
             }
-            
-            int second = getNumOfLazers(bank[j]);
-            while (second <= 0 && j < bank.length - 1) {
-                j++;
-                second = getNumOfLazers(bank[j]);
-            }
-            
-            result += (first * second);
-            
-            i = j;
-            j++;
-            
         }
-        
-        return result;
-        
+        return result;       
     }
     
     private int getNumOfLazers(String floor) {
