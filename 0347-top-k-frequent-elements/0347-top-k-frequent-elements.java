@@ -8,27 +8,41 @@ class Solution {
         }
                 
         
-        int[] res = new int[k];
+        Map<Integer, List<Integer>> valuesFreq = new HashMap<>();
         
-        for (int i = 0; i < k; i++) {
-            res[i] = getKeyOfMaxValue(freq);
+        for (Map.Entry<Integer, Integer> entry : freq.entrySet()) {
+            int occurrence = entry.getValue();
+            int key = entry.getKey();
+            
+            List<Integer> list = valuesFreq.getOrDefault(occurrence, new ArrayList<>());
+            list.add(key);
+            valuesFreq.put(occurrence, list); 
+            
+        }
+        
+        int[] res = new int[k];
+        int count = 0;
+        
+        for (int i = nums.length; i >= 0; i--) {
+            List<Integer> mostFreqKeys = valuesFreq.get(i);
+            
+            if (mostFreqKeys == null){
+                continue;
+            }
+            
+            for (int j = 0; j < mostFreqKeys.size(); j++) {
+                if (count == k) {
+                    break;
+                }
+                res[count++] = mostFreqKeys.get(j);
+            }
+            
+            if (count == k) {
+                break;
+            }
         }
         
         return res;
-        
     }
     
-    private int getKeyOfMaxValue(Map<Integer, Integer> map) {
-        int maxValue = 0;
-        int maxKey = 0;
-        
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() > maxValue) {
-                maxValue = entry.getValue();
-                maxKey = entry.getKey();
-            }
-        }
-        map.put(maxKey, 0);
-        return maxKey;
-    }
 }
