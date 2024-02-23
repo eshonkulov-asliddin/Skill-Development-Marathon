@@ -1,85 +1,39 @@
-class CustomQueue {
-    
-    public List<Integer> list = new ArrayList<>();
-    public int pointer = 0;
-    
-    public void push(int x) {
-        list.add(x);
-    }
-    
-    public int peek() {
-        return this.list.get(pointer);
-    }
-    
-    public int remove() {
-        return this.list.get(pointer++);
-    }
-    
-    public boolean isEmpty() {
-        return this.list.size() - this.pointer == 0;
-    }
-    
-    public int size() {
-        return this.list.size() - pointer;
-    }
-    
-}
-
 class MyStack {
 
-    CustomQueue q1; CustomQueue q2;
+    Queue<Integer> q1;
     
     public MyStack() {
-        this.q1 = new CustomQueue();
-        this.q2 = new CustomQueue();
+        this.q1 = new LinkedList();
     }
     
     public void push(int x) {
-        if (!this.q1.isEmpty()) {
-            this.q1.push(x);
-        }else {
-            this.q2.push(x);
-        }
+        this.q1.add(x);
     }
     
     public int pop() {
-        if (!this.q1.isEmpty()) {
-            while(this.q1.size() > 1) {
-                this.q2.push(q1.remove());
-            }   
-            
-            return this.q1.remove();
-        } else {
-            while(this.q2.size() > 1) {
-                this.q1.push(q2.remove());
-            }   
-            
-            return this.q2.remove();
+        int size = this.q1.size();
+        
+        for (int i = 0; i < size - 1; i++) {
+            this.q1.add(this.q1.remove());
         }
+        
+        return this.q1.remove();
     }
     
     public int top() {
-        if (!this.q1.isEmpty()) {
-            while(this.q1.size() > 1) {
-                this.q2.push(q1.remove());
-            }   
-            
-            int res = this.q1.remove();
-            this.q2.push(res);
-            return res;
-        } else {
-            while(this.q2.size() > 1) {
-                this.q1.push(q2.remove());
-            }  
-            
-            int res = this.q2.remove();
-            this.q1.push(res);
-            return res;
+        int size = this.q1.size();
+        
+        for (int i = 0; i < size - 1; i++) {
+            this.q1.add(this.q1.remove());
         }
+        
+        Integer res = this.q1.remove();
+        this.q1.add(res);
+        return res;
     }
     
     public boolean empty() {
-        return Math.max(this.q1.size(), this.q2.size()) == 0;
+        return this.q1.size() == 0;
     }
 }
 
@@ -95,6 +49,5 @@ class MyStack {
 /*
 LIFO
 
-q1 = []
-q2 = [3, 2]
+q1 = [1, 2, 3]
 */
